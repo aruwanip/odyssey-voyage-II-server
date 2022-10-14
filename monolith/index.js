@@ -11,9 +11,10 @@ const ListingsAPI = require('./datasources/listings');
 const AccountsAPI = require('./datasources/accounts');
 const PaymentsAPI = require('./datasources/payments');
 
+const { buildSubgraphSchema } = require('@apollo/subgraph');
+
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema: buildSubgraphSchema({ typeDefs, resolvers }),
   dataSources: () => {
     return {
       bookingsDb: new BookingsDataSource(),
@@ -36,7 +37,7 @@ const server = new ApolloServer({
   },
 });
 
-const port = 4000;
+const port = 4001;
 
 server
   .listen({ port })
