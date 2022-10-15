@@ -1,2 +1,7 @@
+headers:
+  all:
+    request:
+      - propagate:
+          named: 'Authorization'
 include_subgraph_errors:
   all: true # Propagate errors from all subgraphs
